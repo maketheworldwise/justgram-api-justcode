@@ -16,7 +16,9 @@ const users = [
 const createUsers = (req, res) => {
   const user = req.body.user;
   users.push(user);
+  // console.log(users);
 
+  res.status(201);
   res.json({
     message: "USER_CREATED",
   });
