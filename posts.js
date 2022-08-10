@@ -28,7 +28,20 @@ const readPosts = (req, res) => {
   res.json(posts);
 };
 
-module.exports = { createPosts, readPosts };
+const updatePosts = (req, res) => {
+  const reqPostId = req.params.postId;
+  const reqPostContent = req.body.content;
+
+  posts.map((post) => {
+    if (post.id == reqPostId) {
+      post.content = reqPostContent;
+    }
+  });
+
+  res.status(204);
+};
+
+module.exports = { createPosts, readPosts, updatePosts };
 
 /*
 POST http://localhost:8000/posts
