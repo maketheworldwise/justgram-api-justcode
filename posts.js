@@ -54,4 +54,10 @@ POST http://localhost:8000/posts
         "userId" : 3
   }
 }
+
+POST http://localhost:8000/posts/:postId
+
+{
+  "content" : "Modify content"
+}
 */
