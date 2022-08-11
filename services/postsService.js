@@ -40,7 +40,7 @@ const readUserPosts = (req, res) => {
   const postOwnerId = req.params.userId;
   const result = {};
 
-  const postOwner = users.findUserById(postOwnerId);
+  const postOwner = findUserById(postOwnerId);
   result.userId = postOwner.id;
   result.userName = postOwner.name;
 
