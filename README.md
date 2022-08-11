@@ -273,3 +273,19 @@ $ http -v DELETE 127.0.0.1:8000
 ## 참고
 
 - [nodemon](https://www.npmjs.com/package/nodemon)
+
+---
+
+## Q & A
+
+**Q1) `delete posts[findIndexOfPostToBeDeleted]` 왜 null 값이 남아있을까?**
+
+- `console.log(typeOf posts)` : 객체 (object)
+- `delete` :
+  - 객체의 property 를 지워주는 기능을 수행
+  - 배열 재정리 과정이 없어 배열의 길이가 변경되지 않음.
+
+**Q2) `filter()` vs `splice()` ?**
+
+- filter(), splice() 모두 O(n)의 시간복잡도를 가지기 때문에 차이는 거의 없다고 해도 무방하지만, 벤치마크 상으로는 30% 정도 splice 가 앞선다는 내용 존재
+- [Remove object in array using filter and splice which one is best approach in JavaScript?](https://stackoverflow.com/questions/44435141/remove-object-in-array-using-filter-and-splice-which-one-is-best-approach-in-jav/64776462#64776462)

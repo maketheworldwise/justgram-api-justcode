@@ -41,7 +41,23 @@ const updatePosts = (req, res) => {
   res.status(204);
 };
 
-module.exports = { createPosts, readPosts, updatePosts };
+const deletePosts = (req, res) => {
+  const reqPostId = req.params.postId;
+  // posts = posts.filter((post) => post.id != reqPostId);
+
+  let findIndexOfPostToBeDeleted = 0;
+  posts.forEach((post, idx) => {
+    if (post.id == reqPostId) {
+      findIndexOfPostToBeDeleted = idx;
+    }
+  });
+
+  posts.splice(findIndexOfPostToBeDeleted, 1);
+
+  res.status(204).end();
+};
+
+module.exports = { createPosts, readPosts, updatePosts, deletePosts };
 
 /*
 POST http://localhost:8000/posts
@@ -55,7 +71,7 @@ POST http://localhost:8000/posts
   }
 }
 
-POST http://localhost:8000/posts/:postId
+PATCH http://localhost:8000/posts/:postId
 
 {
   "content" : "Modify content"
