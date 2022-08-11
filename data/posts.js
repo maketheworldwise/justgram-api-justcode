@@ -11,6 +11,18 @@ const posts = [
     content: "Request/Response와 Stateless!!",
     userId: 2,
   },
+  {
+    id: 3,
+    title: "title1",
+    content: "content2",
+    userId: 2,
+  },
+  {
+    id: 4,
+    title: "title2",
+    content: "content2",
+    userId: 2,
+  },
 ];
 
 module.exports = { posts };

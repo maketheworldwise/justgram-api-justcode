@@ -44,6 +44,11 @@ GET http://localhost:8000/posts
 app.get("/posts", readPosts);
 
 /*
+GET http://localhost:8000/:userId/posts
+*/
+app.get("/:userId/posts", readUserPosts);
+
+/*
 PATCH http://localhost:8000/posts/:postId
 
 {

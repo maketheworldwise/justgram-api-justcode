@@ -36,6 +36,28 @@ const readPosts = (_, res) => {
   res.status(200).send(result);
 };
 
+const readUserPosts = (req, res) => {
+  const postOwnerId = req.params.userId;
+  const result = {};
+
+  const postOwner = users.findUserById(postOwnerId);
+  result.userId = postOwner.id;
+  result.userName = postOwner.name;
+
+  const postOwnerPostings = posts
+    .filter((post) => post.userId == postOwnerId)
+    .map((post) => {
+      return {
+        postId: post.id,
+        postTitle: post.title,
+        postContent: post.content,
+      };
+    });
+  result.posting = postOwnerPostings;
+
+  res.status(200).send(result);
+};
+
 const updatePost = (req, res) => {
   const postIdToBeUpdated = req.params.postId;
   const postContentToBeUpdated = req.body.content;
@@ -88,4 +110,4 @@ function findUserById(userId) {
   return users.find((user) => user.id == userId);
 }
 
-module.exports = { createPost, readPosts, updatePost, deletePost };
+module.exports = { createPost, readPosts, readUserPosts, updatePost, deletePost };
